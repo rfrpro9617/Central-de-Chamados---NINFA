@@ -1,3 +1,21 @@
+<?php
+$loginTheme = require __DIR__ . '/../config/login_theme.php';
+// Para ocultar o tema, defina 'none' em config/login_theme.php.
+$loginThemeTemplates = [
+  'halloween' => [
+    'decoration' => __DIR__ . '/login-themes/halloween/decoration.php',
+  ],
+  'christmas' => [
+    'decoration' => __DIR__ . '/login-themes/christmas/decoration.php',
+  ],
+];
+
+if (!is_string($loginTheme) || ($loginTheme !== 'none' && !isset($loginThemeTemplates[$loginTheme]))) {
+  throw new UnexpectedValueException('Tema de login inválido: ' . (is_scalar($loginTheme) ? (string) $loginTheme : gettype($loginTheme)));
+}
+
+$activeLoginTheme = $loginTheme === 'none' ? null : $loginThemeTemplates[$loginTheme];
+?>
 <!DOCTYPE html>
 <html lang="pt-BR">
 
@@ -8,6 +26,7 @@
 
   <script src="https://cdn.tailwindcss.com"></script>
   <script src="https://unpkg.com/lucide@latest"></script>
+  <?php if ($activeLoginTheme !== null) require __DIR__ . '/login-themes/shared-head.php'; ?>
 </head>
 
 <body class="min-h-screen bg-gray-50 flex flex-col">
@@ -23,6 +42,7 @@
           <span class="text-red-500 font-medium">Entre com suas credenciais da intranet para acessar o sistema.</span>
         </p>
       </div>
+      <?php if ($activeLoginTheme !== null) require $activeLoginTheme['decoration']; ?>
       <div class="rounded-2xl border border-gray-200 bg-white p-6 shadow-sm sm:p-8">
         <?php if (!empty($loginError)): ?>
           <div
