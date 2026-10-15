@@ -318,7 +318,7 @@ class AtendimentoMailerFinalizado
                       text-align:center;
                     '>
                       Sistema de Atendimento NINFA · Faculdade de Agronomia · UFRGS<br>
-                      <a href='https://www.ufrgs.br/fagroz/ninfa.php?page=home' style='color:#2563eb;text-decoration:underline;'>Acesse o site</a>
+                      <a href='https://www.ufrgs.br/fagroz/CentralDeChamados/ninfa.php?page=home' style='color:#2563eb;text-decoration:underline;'>Acesse o site</a>
                     </p>
 
                   </td>
