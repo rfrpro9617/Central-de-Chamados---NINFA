@@ -31,15 +31,15 @@ class AtendimentoMailerAberto
       if (!empty($arquivos)) {
         $attachmentsHtml = "<div style='margin-top:16px;'>\n";
         $attachmentsHtml .= "<p style='margin:0 0 10px 0;font-size:15px;font-weight:bold;'>Anexo(s)</p>\n";
-        $baseHost = 'https://www.ufrgs.br/fagroz/uploads/atendimentos/';
+        $baseHost = 'https://www.ufrgs.br/fagroz/CentralDeChamados/uploads/atendimentos/';
         foreach ($arquivos as $a) {
           if (preg_match('/^https?:\/\//i', $a)) {
             $url = $a;
           } else {
             // Se o caminho já contém o segmento 'uploads/atendimentos', removemos
             // essa parte antes de concatenar para evitar duplicação do caminho.
-            if (preg_match('#^(?:/)?(?:fagroz/)?uploads/atendimentos/#i', $a)) {
-              $aTrimmed = preg_replace('#^(?:/)?(?:fagroz/)?uploads/atendimentos/#i', '', $a);
+            if (preg_match('#^(?:/)?(?:fagroz/CentralDeChamados/)?uploads/atendimentos/#i', $a)) {
+              $aTrimmed = preg_replace('#^(?:/)?(?:fagroz/CentralDeChamados/)?uploads/atendimentos/#i', '', $a);
               $url = rtrim($baseHost, '/') . '/' . ltrim($aTrimmed, '/');
             } else {
               $url = rtrim($baseHost, '/') . '/' . ltrim($a, '/');

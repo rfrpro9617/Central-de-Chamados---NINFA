@@ -73,8 +73,8 @@ class AtendimentoMailerEmAndamento
             if (preg_match('/^https?:\\/\\//i', $filePath)) {
               $url = $filePath;
             } else {
-              $relativePath = preg_replace('#^(?:/)?(?:fagroz/)?uploads/atendimentos/#i', '', $filePath);
-              $url = 'https://www.ufrgs.br/fagroz/uploads/atendimentos/' . ltrim($relativePath, '/');
+              $relativePath = preg_replace('#^(?:/)?(?:fagroz/CentralDeChamados/)?uploads/atendimentos/#i', '', $filePath);
+              $url = 'https://www.ufrgs.br/fagroz/CentralDeChamados/uploads/atendimentos/' . ltrim($relativePath, '/');
             }
 
             $fileName = trim((string) ($attachment['nome_original'] ?? ''));
